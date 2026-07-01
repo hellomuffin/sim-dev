@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset=utf-8><title>appliance_easy gemini-3.1-pro-preview</title><style>
+body{font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0f1117;color:#d7dce5}
+header{padding:14px 20px;background:#161922;border-bottom:1px solid #262b38}
+a{color:#6db3ff;text-decoration:none} h1{font-size:18px;margin:0} .sub{color:#8b93a7;font-size:13px}
+.wrap{display:flex;gap:18px;padding:18px;align-items:flex-start;flex-wrap:wrap}
+.stage{flex:0 0 640px} .frame{background:#000;border:1px solid #262b38;border-radius:8px;width:640px;height:480px;object-fit:contain}
+.ctrl{display:flex;gap:8px;align-items:center;margin-top:10px}
+button{background:#222838;color:#d7dce5;border:1px solid #39415a;border-radius:6px;padding:6px 12px;cursor:pointer}
+button:hover{background:#2c3447} .cap{margin-top:10px;padding:10px;background:#161922;border:1px solid #262b38;border-radius:8px;min-height:46px}
+.cmd{font-size:16px;font-weight:600} .ok{color:#5fd38a} .bad{color:#ff8b8b} .noop{color:#8b93a7}
+.side{flex:1;min-width:340px} .traj{max-height:560px;overflow:auto;border:1px solid #262b38;border-radius:8px}
+.row{display:grid;grid-template-columns:38px 1fr auto;gap:8px;padding:6px 10px;border-bottom:1px solid #1d212c;cursor:pointer}
+.row:hover{background:#1b1f2a} .row.sel{background:#243049} .st{color:#8b93a7}
+.cks{margin:0 0 12px;padding:10px;background:#161922;border:1px solid #262b38;border-radius:8px}
+.ck{display:inline-block;margin:3px 6px 3px 0;padding:3px 9px;border-radius:12px;font-size:12px;border:1px solid #39415a}
+.ck.on{background:#173a26;border-color:#2c7a4d;color:#8ff0b6} .ck.off{background:#2a1b1b;border-color:#5a3030;color:#ffb0b0}
+.pill{padding:2px 9px;border-radius:12px;font-size:12px} .pass{background:#173a26;color:#8ff0b6} .fail{background:#3a2017;color:#ffc09a}
+</style></head><body>
+<header><h1>appliance_easy &nbsp;<span class=sub>Appliance operation · easy · gemini-3.1-pro-preview</span></h1>
+<div class=sub>TASK: Open the dishwasher, put the plate inside, close it, and switch it on.
+
+Objects that exist in this home — refer to them ONLY by these exact names (e.g. say 'tv' not 'television', 'sofa' not 'couch'):
+bananas, bed, bench, book, bookshelf, box, breadslice, cabinet, cellphone, chair, closet, clothespile, coffeemaker, coffeepot, coffeetable, computer, condimentbottle, condimentshaker, cookingpot, cpuscreen, cupcake, curtains, cutleryfork, cutleryknife, cutlets, deodorant, desk, dishbowl, dishwasher, door, facecream, faucet, folder, fridge, fryingpan, garbagecan, juice, keyboard, kitchencabinet, kitchencounter, kitchencounterdrawer, kitchentable, knifeblock, microwave, milk, mincedmeat, mouse, mousemat, mug, nightstand, oventray, painkillers, perfume, photoframe, pillow, plate, poundcake, radio, remotecontrol, salmon, sink, slippers, sofa, stove, stovefan, tablelamp, toaster, toy, tv, tvstand, walllamp, wallphone, waterglass</div>
+<div class=sub style="margin-top:4px">result: <span class="pill pass">SUCCESS</span> &nbsp; checkpoints 3/3 &nbsp; 17 steps &nbsp; <a href=index.html>&larr; all episodes</a></div>
+</header>
+<div class=wrap>
+ <div class=stage>
+   <img id=frame class=frame>
+   <div class=ctrl><button onclick=step(-1)>&larr; prev</button><button id=play onclick=toggle()>&#9654; play</button><button onclick=step(1)>next &rarr;</button><span class=st id=counter></span></div>
+   <div class=cap><div class=cmd id=cmd></div><div class=st id=reason></div></div>
+ </div>
+ <div class=side>
+   <div class=cks id=cks></div>
+   <div class=traj id=traj></div>
+ </div>
+</div>
+<script>
+const H=[{"action": "turn left", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "go through nearest door", "disposition": "refused:no door visible \u2014 turn to find one", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "turn left", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "go through nearest door", "disposition": "refused:no door visible \u2014 turn to find one", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "turn left", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "turn left", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "go through nearest door", "disposition": "refused:no door visible \u2014 turn to find one", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "turn left", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "go through nearest door", "disposition": "refused:no door visible \u2014 turn to find one", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "go to nearest plate", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "pick up nearest plate", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "turn left", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "go to nearest dishwasher", "disposition": "ok", "checkpoints": {"opened dishwasher": false, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "open nearest dishwasher", "disposition": "ok", "checkpoints": {"opened dishwasher": true, "put plate in dishwasher": false, "switched dishwasher on": false}}, {"action": "put nearest plate in nearest dishwasher", "disposition": "ok", "checkpoints": {"opened dishwasher": true, "put plate in dishwasher": true, "switched dishwasher on": false}}, {"action": "close nearest dishwasher", "disposition": "ok", "checkpoints": {"opened dishwasher": true, "put plate in dishwasher": true, "switched dishwasher on": false}}, {"action": "switch on nearest dishwasher", "disposition": "ok", "checkpoints": {"opened dishwasher": true, "put plate in dishwasher": true, "switched dishwasher on": true}}], FR=["f/gemini-3.1-pro-preview__appliance_easy/00.jpg", "f/gemini-3.1-pro-preview__appliance_easy/01.jpg", "f/gemini-3.1-pro-preview__appliance_easy/02.jpg", "f/gemini-3.1-pro-preview__appliance_easy/03.jpg", "f/gemini-3.1-pro-preview__appliance_easy/04.jpg", "f/gemini-3.1-pro-preview__appliance_easy/05.jpg", "f/gemini-3.1-pro-preview__appliance_easy/06.jpg", "f/gemini-3.1-pro-preview__appliance_easy/07.jpg", "f/gemini-3.1-pro-preview__appliance_easy/08.jpg", "f/gemini-3.1-pro-preview__appliance_easy/09.jpg", "f/gemini-3.1-pro-preview__appliance_easy/10.jpg", "f/gemini-3.1-pro-preview__appliance_easy/11.jpg", "f/gemini-3.1-pro-preview__appliance_easy/12.jpg", "f/gemini-3.1-pro-preview__appliance_easy/13.jpg", "f/gemini-3.1-pro-preview__appliance_easy/14.jpg", "f/gemini-3.1-pro-preview__appliance_easy/15.jpg", "f/gemini-3.1-pro-preview__appliance_easy/16.jpg"];
+let i=0, timer=null;
+const fr=document.getElementById('frame'),cmd=document.getElementById('cmd'),rs=document.getElementById('reason'),
+      cnt=document.getElementById('counter'),traj=document.getElementById('traj'),cks=document.getElementById('cks');
+function render(){
+  fr.src=FR[i]; const h=H[i]||{};
+  const dcls=h.disposition&&h.disposition.startsWith('ok')?'ok':(h.disposition=='noop'?'noop':'bad');
+  cmd.innerHTML=(h.action?('&#9656; '+h.action):'<span class=noop>(no-op)</span>');
+  rs.innerHTML='step '+i+' &middot; <span class="'+dcls+'">'+(h.disposition||'')+'</span>';
+  cnt.textContent=(i+1)+' / '+FR.length;
+  const cp=h.checkpoints||{};
+  cks.innerHTML=Object.keys(cp).map(k=>'<span class="ck '+(cp[k]?'on':'off')+'">'+(cp[k]?'&#10003; ':'')+k+'</span>').join('');
+  [...traj.children].forEach((r,j)=>r.classList.toggle('sel',j==i));
+  const sel=traj.children[i]; if(sel) sel.scrollIntoView({block:'nearest'});
+}
+H.forEach((h,j)=>{const r=document.createElement('div');r.className='row';
+  const dcls=h.disposition&&h.disposition.startsWith('ok')?'ok':(h.disposition=='noop'?'noop':'bad');
+  r.innerHTML='<span class=st>'+j+'</span><span>'+(h.action||'<span class=noop>(no-op)</span>')+'</span><span class="'+dcls+'">'+(h.disposition||'').split(':')[0]+'</span>';
+  r.onclick=()=>{i=j;render();};traj.appendChild(r);});
+function step(d){i=Math.max(0,Math.min(FR.length-1,i+d));render();}
+function toggle(){const b=document.getElementById('play');
+  if(timer){clearInterval(timer);timer=null;b.innerHTML='&#9654; play';}
+  else{b.innerHTML='&#10073;&#10073; pause';timer=setInterval(()=>{if(i>=FR.length-1){clearInterval(timer);timer=null;b.innerHTML='&#9654; play';}else step(1);},700);}}
+render();
+</script></body></html>
